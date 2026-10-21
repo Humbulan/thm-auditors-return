@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  vulnerable:
+    image: python:3.10-slim
+    container_name: thm_vulnerable
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "pip install lxml && python3 dsvw.py"
+    ports:
+      - "65412:65412"
+
+  secure:
+    image: python:3.10-slim
+    container_name: thm_secure
+    working_dir: /app
+    volumes:
+      - .:/app
+    command: sh -c "pip install lxml && python3 dssw.py"
+    ports:
+      - "65413:65413"
